@@ -1,0 +1,5 @@
+services:
+  hey:
+    build: .
+    container_name: hey
+

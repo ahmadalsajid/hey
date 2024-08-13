@@ -3,7 +3,6 @@
 #======================================#
 
 FROM golang:1.22 AS builder
-LABEL author="ahmadalsajid@gmail.com"
 
 WORKDIR /app
 
@@ -23,15 +22,15 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /go/bin/hey hey.go
 FROM alpine:3.20
 
 ARG APPLICATION="hey"
-ARG DESCRIPTION="Lightweight, minimal docker image of Hey, an HTTP load generator, ApacheBench (ab) replacement, inspired from https://hub.docker.com/r/ricoli/hey"
+ARG DESCRIPTION="Lightweight, minimal docker image of Hey, an HTTP loadgenerator, ApacheBench (ab) replacement, main Go code is available here:--> https://github.com/rakyll/hey"
 ARG PACKAGE="ahmadalsajid/hey"
 
-LABEL org.opencontainers.image.ref.name="${PACKAGE}" \
-    org.opencontainers.image.authors="ahmadalsajid@gmail.com" \
-    org.opencontainers.image.documentation="https://github.com/${PACKAGE}/README.md" \
-    org.opencontainers.image.description="${DESCRIPTION}" \
-    org.opencontainers.image.licenses="Apache 2.0" \
-    org.opencontainers.image.source="https://github.com/${PACKAGE}"
+LABEL name="${PACKAGE}" \
+    author="ahmadalsajid@gmail.com" \
+    documentation="https://github.com/${PACKAGE}/README.md" \
+    description="${DESCRIPTION}" \
+    licenses="MIT License" \
+    source="https://github.com/${PACKAGE}"
 
 COPY --from=builder /go/bin/hey /hey
 
