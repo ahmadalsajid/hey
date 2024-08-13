@@ -1,0 +1,34 @@
+name: Hey
+run-name: CI/CD for building docker image for HEY and push to docker hub.
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: build docker image and check it works properly
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: build docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: false
+          tags: |
+            ahmadalsajid/hey:latest
+            ahmadalsajid/hey:alpine3.20-go1.22
+
+      - name: Send some load to google
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ahmadalsajid/hey:latest
+          run: hey -n 1000 -c 100 https://google.com
