@@ -4,7 +4,7 @@
 
 Lightweight, minimal docker image of [Hey](https://github.com/rakyll/hey),
 an HTTP load generator, ApacheBench (ab) replacement., with latest version
-of Go and Alpine.
+of Go and Alpine for both Linux/amd64 and Linux/arm64 architectures.
 
 Hey is a tiny program that sends some load to a web application.
 
