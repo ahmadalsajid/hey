@@ -37,7 +37,6 @@ jobs:
       - name: build docker image for linux/arm64
         run: |
           apt install docker-buildx
-#          apt-get install -y qemu qemu-user-static
           docker build --platform linux/arm64 -t hey .
 
       - name: check container works properly on linux/arm64
