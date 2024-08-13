@@ -22,13 +22,7 @@ jobs:
         with:
           context: .
           platforms: linux/amd64,linux/arm64
-          push: false
+          push: true
           tags: |
             ahmadalsajid/hey:latest
             ahmadalsajid/hey:alpine3.20-go1.22
-
-      - name: Send some load to google
-        uses: addnab/docker-run-action@v3
-        with:
-          image: ahmadalsajid/hey:latest
-          run: hey -n 1000 -c 100 https://google.com
