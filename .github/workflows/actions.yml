@@ -28,7 +28,6 @@ jobs:
   test_arm64:
     name: build docker image and test for linux/arm64 architecture
     runs-on: ubuntu-latest
-    container: docker
     environment:
       name: prod
     steps:
@@ -36,7 +35,7 @@ jobs:
 
       - name: build docker image for linux/arm64
         run: |
-          apt install docker-buildx
+          sudo apt install docker-buildx
           docker build --platform linux/arm64 -t hey .
 
       - name: check container works properly on linux/arm64
