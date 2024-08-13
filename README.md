@@ -1,5 +1,7 @@
 ![hey](http://i.imgur.com/szzD9q0.png)
 
+![Build](https://github.com/ahmadalsajid/FastApp/actions/workflows/production.yml/badge.svg?branch=main)
+
 Lightweight, minimal docker image of [Hey](https://github.com/rakyll/hey),
 an HTTP load generator, ApacheBench (ab) replacement., with latest version
 of Go and Alpine.

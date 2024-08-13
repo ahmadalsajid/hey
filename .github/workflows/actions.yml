@@ -1,4 +1,4 @@
-name: Hey
+name: Build
 run-name: CI/CD for building docker image for HEY and push to docker hub.
 on:
   push:
@@ -9,11 +9,20 @@ on:
       - main
 
 jobs:
-  test:
-    name: build docker image and check it works properly
+  build:
+    name: build docker image and push to docker hub
     runs-on: ubuntu-latest
+    environment:
+      name: prod
     steps:
       - uses: actions/checkout@v4
+
+      - name: login to docker registry
+        uses: docker/login-action@v3
+        with:
+          username: ${{vars.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_TOKEN}}
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
