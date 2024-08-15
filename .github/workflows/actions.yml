@@ -25,7 +25,7 @@ jobs:
       - name: Pull code and run tests
         run: |
           git clone https://github.com/rakyll/hey.git
-          cd hey-docker
+          cd hey
           go test -v
           
 
@@ -42,7 +42,7 @@ jobs:
         run: docker build --platform linux/amd64 -t hey-docker .
 
       - name: Check container works properly on linux/amd64
-        run: docker run --rm  hey-docker  -n 10 -c 1 https://google.com
+        run: docker run --rm  hey-docker -n 10 -c 1 https://google.com
 
   test_arm64:
     name: Build docker image and test for linux/arm64 architecture
@@ -59,7 +59,7 @@ jobs:
           docker build --platform linux/arm64 -t hey-docker .
 
       - name: Check container works properly on linux/arm64
-        run: docker run --rm  hey-docker  -n 10 -c 1 https://google.com
+        run: docker run --rm  hey-docker -n 10 -c 1 https://google.com
 
   build:
     name: Build docker image and push to docker hub
