@@ -1,5 +1,5 @@
 name: Build
-run-name: CI/CD for building docker image for HEY and push to docker hub.
+run-name: CI/CD for building docker image for hey-docker-docker and push to docker hub.
 on:
   push:
     branches:
@@ -24,8 +24,8 @@ jobs:
           go version
       - name: Pull code and run tests
         run: |
-          git clone https://github.com/rakyll/hey.git
-          cd hey
+          git clone https://github.com/rakyll/hey-docker.git
+          cd hey-docker
           go test -v
           
 
@@ -39,10 +39,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build docker image for linux/amd64
-        run: docker build --platform linux/amd64 -t hey .
+        run: docker build --platform linux/amd64 -t hey-docker .
 
       - name: Check container works properly on linux/amd64
-        run: docker run --rm  hey  -n 10 -c 1 https://google.com
+        run: docker run --rm  hey-docker  -n 10 -c 1 https://google.com
 
   test_arm64:
     name: Build docker image and test for linux/arm64 architecture
@@ -56,10 +56,10 @@ jobs:
       - name: Build docker image for linux/arm64
         run: |
           sudo apt-get install -y qemu qemu-user-static
-          docker build --platform linux/arm64 -t hey .
+          docker build --platform linux/arm64 -t hey-docker .
 
       - name: Check container works properly on linux/arm64
-        run: docker run --rm  hey  -n 10 -c 1 https://google.com
+        run: docker run --rm  hey-docker  -n 10 -c 1 https://google.com
 
   build:
     name: Build docker image and push to docker hub
@@ -88,5 +88,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ahmadalsajid/hey:latest
-            ahmadalsajid/hey:alpine3.20-go1.22
+            ahmadalsajid/hey-docker:latest
+            ahmadalsajid/hey-docker:alpine3.20-go1.22

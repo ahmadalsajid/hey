@@ -11,7 +11,7 @@ Hey is a tiny program that sends some load to a web application.
 ## Installation
 
 ```
-$ docker pull ahmadalsajid/hey
+$ docker pull ahmadalsajid/hey-docker
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ hey runs provided number of requests in the provided concurrency level and
 prints stats. A basic usage could be
 
 ```
-$ docker run --rm  ahmadalsajid/hey -n 1000 -c 100 https://google.com
+$ docker run --rm  ahmadalsajid/hey-docker -n 1000 -c 100 https://google.com
 ```
 
 It also supports HTTP2 endpoints.

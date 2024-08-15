@@ -1,5 +1,5 @@
 services:
   hey:
     build: .
-    container_name: hey
+    container_name: hey-docker
 
