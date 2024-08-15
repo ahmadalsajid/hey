@@ -24,7 +24,7 @@ jobs:
           go version
       - name: Pull code and run tests
         run: |
-          git clone https://github.com/rakyll/hey-docker.git
+          git clone https://github.com/rakyll/hey.git
           cd hey-docker
           go test -v
           
