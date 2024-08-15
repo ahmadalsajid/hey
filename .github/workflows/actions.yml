@@ -1,4 +1,4 @@
-name: Build
+name: CI/CD
 run-name: CI/CD for building docker image for hey-docker-docker and push to docker hub.
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install go
-        run : |
+        run: |
           wget https://go.dev/dl/go1.22.6.linux-amd64.tar.gz
           sudo tar -C /usr/local -xzf go1.22.6.linux-amd64.tar.gz
           export PATH=$PATH:/usr/local/go/bin

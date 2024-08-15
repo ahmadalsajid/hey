@@ -1,6 +1,6 @@
 ![hey](http://i.imgur.com/szzD9q0.png)
 
-![Build](https://github.com/ahmadalsajid/hey-docker/actions/workflows/actions.yml/badge.svg?branch=main)
+[![Github Actions](https://github.com/ahmadalsajid/hey-docker/actions/workflows/actions.yml/badge.svg?branch=main)](https://github.com/ahmadalsajid/hey-docker/actions/workflows/actions.yml/badge.svg?branch=main)
 
 Lightweight, minimal docker image of [Hey](https://github.com/rakyll/hey),
 an HTTP load generator, ApacheBench (ab) replacement., with latest version
